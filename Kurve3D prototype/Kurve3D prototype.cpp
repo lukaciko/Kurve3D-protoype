@@ -224,9 +224,19 @@ int _tmain(int argc, _TCHAR* argv[])
 
         glm::vec3 sPos = p_snake->getPosition();
         double dist= 0;
+		double increase=0.001;
+		bool change = false;
         for(std::vector<SnakeLink *>::iterator it = snakeLinks.begin(); it != snakeLinks.end(); ++it) {
-            dist=dist+0.001;
-            glm::vec3 iPos = (*it)->getPosition();
+            if (dist>0.899 & !change) {
+				increase *= -1;
+				change = true;
+			}
+			if (dist<0.05 & change) {
+				increase *= -1;
+				change = false;
+			}
+			dist=dist+increase;
+			glm::vec3 iPos = (*it)->getPosition();
             GLint uniModel = glGetUniformLocation( shaderProgram, "model" );
             glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), iPos ) ) );
 
