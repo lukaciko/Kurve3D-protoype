@@ -7,9 +7,11 @@
 #include <glm\glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <ctime>
 
-float diff = 0.01f; // Rate of shange TODO : time relative
 
+float diff = 1.0f; // change speed here
+clock_t begin = clock();
 glm::vec3 v4tov3(glm::vec4 v1);
 
 Snake::Snake() {
@@ -31,8 +33,7 @@ Snake::Snake() {
 
 void Snake::move() {
     float diff_angle = 2.0f;
-
-    // Check input
+	// Check input
     if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS) {
         glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, glm::cross(v4tov3(up), v4tov3(direction))); 
         direction = direction * rotateM;
@@ -57,16 +58,21 @@ void Snake::move() {
     // Change direction
 
     // Change position
-    for (int i = 0; i!=4; ++i) {
-        lastPosition[i] += diff * direction[i];
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	begin=end;
+	//std::cout<<elapsed_secs;
+	double diffT=diff*elapsed_secs;
+	for (int i = 0; i!=4; ++i) {
+        lastPosition[i] += diffT * direction[i];
     }
 
 }
 void Snake::draw() {
-    std::cout << "drawing the snake at position " << lastPosition[0] << " " << lastPosition[1] << " "
-        << lastPosition[2]  << " " << lastPosition[3] << "\n";
-    std::cout << "direction " << direction[0] << " " << direction[1] << " "
-        << direction[2]  << " " << direction[3] << "\n";
+    //std::cout << "drawing the snake at position " << lastPosition[0] << " " << lastPosition[1] << " "
+        //<< lastPosition[2]  << " " << lastPosition[3] << "\n";
+    //std::cout << "direction " << direction[0] << " " << direction[1] << " "
+        //<< direction[2]  << " " << direction[3] << "\n";
 }
 
 glm::vec3 Snake::getPosition() {
