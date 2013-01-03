@@ -11,7 +11,7 @@
 
 
 float diff = 1.0f; // change speed here
-clock_t begin = clock();
+clock_t begin;
 glm::vec3 v4tov3(glm::vec4 v1);
 
 Snake::Snake() {
@@ -28,6 +28,7 @@ Snake::Snake() {
     up[1] = 0.0f;
     up[2] = 1.0f;
     up[3] = 0.0f; // Vector - w=0
+	begin = clock();
 }
 
 
