@@ -190,6 +190,8 @@ int _tmain(int argc, _TCHAR* argv[])
     glVertexAttribPointer( texAttrib, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void * ) ( 2*sizeof(float) ) );
     glEnableVertexAttribArray( texAttrib );
 
+    glEnable( GL_DEPTH_TEST );
+
     Snake* p_snake = new Snake;
     std::vector<SnakeLink *> snakeLinks;
 
@@ -197,7 +199,7 @@ int _tmain(int argc, _TCHAR* argv[])
     while( glfwGetWindowParam( GLFW_OPENED ) ) {
 
         glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-        glClear( GL_COLOR_BUFFER_BIT );
+        glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
         //if (glfwGetKey( 'a' ) == GLFW_PRESS || glfwGetKey( 'A' ) == GLFW_PRESS)
         //    view = glm::rotate( view, 0.3f, glm::vec3( 1.0f, 0.0f, 0.0f) );
