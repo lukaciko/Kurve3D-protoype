@@ -160,7 +160,7 @@ int _tmain(int argc, _TCHAR* argv[])
     int iWidth, iHeight;
     unsigned char* image;
     
-    const char* path = "circle.png";
+    const char* path = "circle1.png";
     image = SOIL_load_image( path, &iWidth, &iHeight, 0, SOIL_LOAD_RGBA );
 	glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, iWidth, iHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image );
 	SOIL_free_image_data( image );
@@ -256,6 +256,7 @@ int _tmain(int argc, _TCHAR* argv[])
                 glUniform1f(uniColor, 0.0f+dist);
 
             glDrawArrays( GL_TRIANGLES, 0, 6 );
+			
         }
 
         p_snake->draw();
@@ -264,7 +265,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
         glDrawArrays( GL_TRIANGLES, 0, 6 );
 
+		if(collision) {
+				delete p_snake;
+				p_snake = new Snake;
+				snakeLinks.clear();
 
+
+			}
         glfwSwapBuffers(); // Also calls glfwPoolEvents
     }
 
