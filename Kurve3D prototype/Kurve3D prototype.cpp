@@ -47,10 +47,7 @@ const char* fragmentSource =
     "void main() {"
     "   if (texture(tex, TexCoord).a < 0.1f) "
     "      discard;"    
-    "   if (color < 0.5f)"
-    "	   outColor = texture(tex, TexCoord) * vec4( 1.0, color, color, 1.0 );"
-    "   else"
-    "      outColor = texture(tex, TexCoord) * vec4( 1.0, color, color, 1.0 );"
+    "   outColor = texture(tex, TexCoord) * vec4( 1.0, color, color, 1.0 );"
     "}";
 
 GLuint vertexShader;
@@ -190,7 +187,7 @@ int _tmain(int argc, _TCHAR* argv[])
     glVertexAttribPointer( texAttrib, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void * ) ( 2*sizeof(float) ) );
     glEnableVertexAttribArray( texAttrib );
 
-    glEnable( GL_DEPTH_TEST );
+	glEnable( GL_DEPTH_TEST );
 
     Snake* p_snake = new Snake;
     std::vector<SnakeLink *> snakeLinks;
@@ -199,9 +196,9 @@ int _tmain(int argc, _TCHAR* argv[])
     while( glfwGetWindowParam( GLFW_OPENED ) ) {
 
         glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-        glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-        //if (glfwGetKey( 'a' ) == GLFW_PRESS || glfwGetKey( 'A' ) == GLFW_PRESS)
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+		bool crash=false;
+		//if (glfwGetKey( 'a' ) == GLFW_PRESS || glfwGetKey( 'A' ) == GLFW_PRESS)
         //    view = glm::rotate( view, 0.3f, glm::vec3( 1.0f, 0.0f, 0.0f) );
         //if (glfwGetKey( 'b' ) == GLFW_PRESS || glfwGetKey( 'B' ) == GLFW_PRESS)
         //    view = glm::rotate( view, 0.3f, glm::vec3( 0.0f, 1.0f, 0.0f) );
@@ -228,8 +225,11 @@ int _tmain(int argc, _TCHAR* argv[])
         double dist= 0;
 		double increase=0.001;
 		bool change = false;
-        for(std::vector<SnakeLink *>::iterator it = snakeLinks.begin(); it != snakeLinks.end(); ++it) {
-            if (dist>0.899 & !change) {
+		int i=0;
+		bool collision = false;
+		for(std::vector<SnakeLink *>::iterator it = snakeLinks.begin(); it != snakeLinks.end(); ++it) {
+            i++;
+			if (dist>0.899 & !change) {
 				increase *= -1;
 				change = true;
 			}
@@ -239,7 +239,11 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 			dist=dist+increase;
 			glm::vec3 iPos = (*it)->getPosition();
-            GLint uniModel = glGetUniformLocation( shaderProgram, "model" );
+            if((pow(sPos.x-iPos.x,2) < 0.01) && (pow(sPos.y-iPos.y,2) < 0.01) && (pow(sPos.z-iPos.z,2) < 0.01) && (i<(int)snakeLinks.size()-150) && ((int)snakeLinks.size()>150) && !collision){
+				 std::cout<<"Collision!";
+				 collision=true;
+			}
+			GLint uniModel = glGetUniformLocation( shaderProgram, "model" );
             glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), iPos ) ) );
 
             glm::vec3 distV = sPos - iPos;
