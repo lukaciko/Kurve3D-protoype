@@ -14,6 +14,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <vector>
+#include <ctime>
 
 #define _USE_MATH_DEFINES // So we can use M_PI
 #include <math.h>
@@ -75,8 +76,16 @@ GLuint fragmentShader;
 GLuint cylinderVertexShader;
 GLuint cylinderFragmentShader;
 
+bool gamePaused;
+bool unpausedImpulse;
+
 void GLFWCALL keyCallbackFunction(int key, int newState) {
     std::cout << key << " " << ( newState == GLFW_PRESS ? "pressed" : "released" ) << "\n";
+    if ( key == GLFW_KEY_SPACE && newState == GLFW_PRESS ) { 
+        gamePaused = !gamePaused; 
+        if ( !gamePaused ) 
+            unpausedImpulse = true;
+    }
 }
 
 float vertices[] = {
@@ -222,7 +231,7 @@ int _tmain(int argc, _TCHAR* argv[])
     glBindVertexArray( VAOs[1] );
 
     // Generate the circle vertices
-    int k = 12;
+    int k = 50;
     float r = 0.25;
     float* circleVertices =  new float[2*k];
     
@@ -237,7 +246,7 @@ int _tmain(int argc, _TCHAR* argv[])
     GLuint circleVBO;
     glGenBuffers( 1, &circleVBO ); // Generate 1 buffer
     glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
-    glBufferData( GL_ARRAY_BUFFER, 2 * k * sizeof(float), circleVertices, GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, 2 * k * sizeof(float), circleVertices, GL_DYNAMIC_DRAW );
 
     GLuint cylinderShaderProgram = compileShaders(cylinderVertexShader, cylinderFragmentShader, cylinderVertexSource, cylinderFragmentSource);
     glUseProgram( cylinderShaderProgram );
@@ -256,17 +265,11 @@ int _tmain(int argc, _TCHAR* argv[])
         glUseProgram( shaderProgram );
 
         bool crash=false;
-        //if (glfwGetKey( 'a' ) == GLFW_PRESS || glfwGetKey( 'A' ) == GLFW_PRESS)
-        //    view = glm::rotate( view, 0.3f, glm::vec3( 1.0f, 0.0f, 0.0f) );
-        //if (glfwGetKey( 'b' ) == GLFW_PRESS || glfwGetKey( 'B' ) == GLFW_PRESS)
-        //    view = glm::rotate( view, 0.3f, glm::vec3( 0.0f, 1.0f, 0.0f) );
-        //if (glfwGetKey( 'c' ) == GLFW_PRESS || glfwGetKey( 'C' ) == GLFW_PRESS)
-        //    view = glm::rotate( view, 0.3f, glm::vec3( 0.0f, 0.0f, 1.0f) );
 
         glm::mat4 view = glm::lookAt(
-            p_snake->getPosition() - p_snake->getDirection() + p_snake->getUp(),          // Postion of the camera
-            p_snake->getPosition(),         // Point on screen
-            p_snake->getUp()          // Up axis
+            p_snake->getPosition() - p_snake->getDirection() + p_snake->getUp(), // Position of the camera
+            p_snake->getPosition(),                                              // Point on screen
+            p_snake->getUp()                                                     // Up axis
             );
 
         GLint uniView = glGetUniformLocation( shaderProgram, "view" );
@@ -276,8 +279,14 @@ int _tmain(int argc, _TCHAR* argv[])
         GLint uniProj = glGetUniformLocation( shaderProgram, "proj" );
         glUniformMatrix4fv( uniProj, 1, GL_FALSE, glm::value_ptr( proj ) );
 
-        snakeLinks.push_back(new SnakeLink(p_snake->getPosition()));
-        p_snake->move();
+        if (unpausedImpulse) {
+            p_snake->setBegin(clock());
+            unpausedImpulse = false;
+        }
+        if (!gamePaused) { 
+            snakeLinks.push_back(new SnakeLink(p_snake->getPosition()));
+            p_snake->move();
+        }
 
         glm::vec3 sPos = p_snake->getPosition();
         double dist= 0;
@@ -307,11 +316,7 @@ int _tmain(int argc, _TCHAR* argv[])
             glm::vec3 distV = sPos - iPos;
 
             GLint uniColor = glGetUniformLocation( shaderProgram, "color" );
-            if (distV.x*distV.x + distV.y*distV.y + distV.z*distV.z > 0.01f) {                
-                glUniform1f(uniColor, 0.0f+dist);                
-            }
-            else
-                glUniform1f(uniColor, 0.0f+dist);
+            glUniform1f(uniColor, 0.0f+dist);
 
             glDrawArrays( GL_TRIANGLES, 0, 6 );
         }
@@ -325,15 +330,24 @@ int _tmain(int argc, _TCHAR* argv[])
         glBindVertexArray(VAOs[1]);
         glUseProgram( cylinderShaderProgram );
 
+        glm::mat4 viewc = glm::lookAt(
+            p_snake->getPosition() - p_snake->getDirection() + p_snake->getUp(), // Position of the camera
+            p_snake->getPosition(),                                              // Point on screen
+            p_snake->getUp()                                              // Up axis
+            );
+
         GLint uniModel1 = glGetUniformLocation( cylinderShaderProgram, "model" );
-        glUniformMatrix4fv( uniModel1, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), sPos ) ) );
+        glUniformMatrix4fv( uniModel1, 1, GL_FALSE, glm::value_ptr( p_snake->getTransformMatrix() ));  
         GLint uniView1 = glGetUniformLocation( cylinderShaderProgram, "view" );
-        glUniformMatrix4fv( uniView1, 1, GL_FALSE, glm::value_ptr( view ) );
+        glUniformMatrix4fv( uniView1, 1, GL_FALSE, glm::value_ptr( viewc ) );
         glm::mat4 proj1 = glm::perspective( 45.0f, (float)width / (float)height, 1.0f, 10.0f );
         GLint uniProj1 = glGetUniformLocation( cylinderShaderProgram, "proj" );
         glUniformMatrix4fv( uniProj1, 1, GL_FALSE, glm::value_ptr( proj1 ) );
 
-        glDrawArrays( GL_LINE_LOOP, 0, k   );
+        glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
+        glBufferData( GL_ARRAY_BUFFER, 2 * k * sizeof(float), circleVertices, GL_DYNAMIC_DRAW );
+
+        glDrawArrays( GL_LINE_LOOP, 0, k );
 
 		if(collision) {
 				delete p_snake;
