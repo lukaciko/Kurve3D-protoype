@@ -57,12 +57,12 @@ const char* fragmentSource =
 // Shader sources for cylinders
 const char* cylinderVertexSource =
     "#version 150\n"
-    "in vec2 position;"
+    "in vec3 position;"
     "uniform mat4 model;"
     "uniform mat4 view;"
     "uniform mat4 proj;"
     "void main() {"
-    "	gl_Position = proj * view * model * vec4( position, 0.0, 1.0 );"
+    "	gl_Position = proj * view * vec4( position, 1.0 );"
     "}";
 const char* cylinderFragmentSource =
     "#version 150\n"
@@ -78,6 +78,7 @@ GLuint cylinderFragmentShader;
 
 bool gamePaused;
 bool unpausedImpulse;
+
 
 void GLFWCALL keyCallbackFunction(int key, int newState) {
     std::cout << key << " " << ( newState == GLFW_PRESS ? "pressed" : "released" ) << "\n";
@@ -231,28 +232,21 @@ int _tmain(int argc, _TCHAR* argv[])
     glBindVertexArray( VAOs[1] );
 
     // Generate the circle vertices
-    int k = 50;
-    float r = 0.25;
-    float* circleVertices =  new float[2*k];
+    int k = 10;
+    float r = 0.12;
+    int maxCircles = 2000;
+    float* circleVertices =  new float[3*k];
     
-    for(int i = 0; i != k; ++i) {
-        float phi = 2 * M_PI * i / k;
-        float x = sin(phi) * r;
-        float y = cos(phi) * r;
-        circleVertices[2*i] = x;
-        circleVertices[2*i+1] = y;
-    }
-
     GLuint circleVBO;
     glGenBuffers( 1, &circleVBO ); // Generate 1 buffer
     glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
-    glBufferData( GL_ARRAY_BUFFER, 2 * k * sizeof(float), circleVertices, GL_DYNAMIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, maxCircles * 3 * k * sizeof(float), NULL, GL_DYNAMIC_DRAW );
 
     GLuint cylinderShaderProgram = compileShaders(cylinderVertexShader, cylinderFragmentShader, cylinderVertexSource, cylinderFragmentSource);
     glUseProgram( cylinderShaderProgram );
 
     GLint cyposAttrib = glGetAttribLocation( cylinderShaderProgram, "position" );
-    glVertexAttribPointer( cyposAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0 );
+    glVertexAttribPointer( cyposAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0 );
     glEnableVertexAttribArray( cyposAttrib );
 
     // Main game loop
@@ -275,7 +269,7 @@ int _tmain(int argc, _TCHAR* argv[])
         GLint uniView = glGetUniformLocation( shaderProgram, "view" );
         glUniformMatrix4fv( uniView, 1, GL_FALSE, glm::value_ptr( view ) );
 
-        glm::mat4 proj = glm::perspective( 45.0f, (float)width / (float)height, 1.0f, 10.0f );
+        glm::mat4 proj = glm::perspective( 45.0f, (float)width / (float)height, 0.4f, 10.0f );
         GLint uniProj = glGetUniformLocation( shaderProgram, "proj" );
         glUniformMatrix4fv( uniProj, 1, GL_FALSE, glm::value_ptr( proj ) );
 
@@ -344,16 +338,29 @@ int _tmain(int argc, _TCHAR* argv[])
         GLint uniProj1 = glGetUniformLocation( cylinderShaderProgram, "proj" );
         glUniformMatrix4fv( uniProj1, 1, GL_FALSE, glm::value_ptr( proj1 ) );
 
+        for(int i = 0; i != k; ++i) {
+            float phi = 2 * M_PI * i / k;
+            float x = sin(phi) * r;
+            float y = cos(phi) * r;
+            // Do the model transform
+            glm::vec4 pointVec =  glm::vec4( x, y, 0.0f, 1.0f);
+            glm::vec4 newVec = p_snake->getTransformMatrix() * pointVec;
+            //std::cout << x << " --------- " << pointVec.x << "\n";
+            circleVertices[3*i] = newVec.x;
+            circleVertices[3*i+1] = newVec.y;
+            circleVertices[3*i+2] = newVec.z;
+        }
+        
         glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
-        glBufferData( GL_ARRAY_BUFFER, 2 * k * sizeof(float), circleVertices, GL_DYNAMIC_DRAW );
+        glBufferSubData( GL_ARRAY_BUFFER, 3 * k * sizeof(float) * snakeLinks.size(), 3 * k * sizeof(float), circleVertices );
 
-        glDrawArrays( GL_LINE_LOOP, 0, k );
+        glDrawArrays( GL_LINE_LOOP, 0, snakeLinks.size() * k );
 
 		if(collision) {
-				delete p_snake;
-				p_snake = new Snake;
-				snakeLinks.clear();
-		}
+            delete p_snake;
+            p_snake = new Snake;
+            snakeLinks.clear();
+        }
 
         glfwSwapBuffers(); // Also calls glfwPoolEvents
     }

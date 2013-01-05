@@ -38,28 +38,28 @@ void Snake::move() {
 
 	// Check input
     if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS) {
-        glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, glm::cross(v4tov3(up), v4tov3(direction))); 
-        direction = direction * rotateM;
-        rotationMatrix = rotationMatrix * rotateM;
-        up = up * rotateM;
+        glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, glm::cross(v4tov3(up), v4tov3(direction))); 
+        direction = rotateM * direction;
+        rotationMatrix = rotateM * rotationMatrix;
+        up = rotateM * up;
     }
     if (glfwGetKey( GLFW_KEY_DOWN ) == GLFW_PRESS) {
-        glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, glm::cross(v4tov3(up), v4tov3(direction)));  
-        direction = direction * rotateM;
-        rotationMatrix = rotationMatrix * rotateM;
-        up = up * rotateM;
+        glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, glm::cross(v4tov3(up), v4tov3(direction)));  
+        direction = rotateM * direction;
+        rotationMatrix = rotateM * rotationMatrix;
+        up = rotateM * up;
     }
     if (glfwGetKey( GLFW_KEY_LEFT ) == GLFW_PRESS) {
-        glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, v4tov3(up)); 
-        direction = direction * rotateM;
-        rotationMatrix = rotationMatrix * rotateM;
-        up = up * rotateM;
+        glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, v4tov3(up)); 
+        direction =  rotateM * direction;
+        rotationMatrix = rotateM * rotationMatrix;
+        up = rotateM * up;
     }
     if (glfwGetKey( GLFW_KEY_RIGHT ) == GLFW_PRESS) {
-        glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, v4tov3(up)); 
-        direction = direction * rotateM;
-        rotationMatrix = rotationMatrix * rotateM;
-        up = up * rotateM;
+        glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, v4tov3(up)); 
+        direction = rotateM * direction;
+        rotationMatrix = rotateM * rotationMatrix;
+        up = rotateM * up;
     }
 
     // Change position
@@ -92,5 +92,5 @@ glm::vec3 v4tov3(glm::vec4 v1)  {
 }
 
 glm::mat4 Snake::getTransformMatrix() {
-    return glm::translate(glm::mat4(), getPosition()) * glm::transpose(rotationMatrix);
+    return glm::translate(glm::mat4(), getPosition()) * rotationMatrix;
 }
