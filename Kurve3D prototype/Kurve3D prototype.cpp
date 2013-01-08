@@ -58,17 +58,36 @@ const char* fragmentSource =
 const char* cylinderVertexSource =
     "#version 150\n"
     "in vec3 position;"
+    "in vec3 normal;"
     "uniform mat4 model;"
     "uniform mat4 view;"
     "uniform mat4 proj;"
+    "uniform mat4 normalMatrix;"
+    "out vec3 smoothNormal;"
+    "out vec3 smoothLightDir;"
     "void main() {"
+    "   smoothNormal = (normalMatrix * vec4(normal, 0.0)).xyz;"
+    "   smoothLightDir = normalize(vec3(18.0, 39.0, 0.0) - (view * vec4( position, 1.0)).xyz);"
     "	gl_Position = proj * view * vec4( position, 1.0 );"
     "}";
 const char* cylinderFragmentSource =
     "#version 150\n"
+    "in vec3 smoothNormal;"
+    "in vec3 smoothLightDir;"
     "out vec4 outColor;"
     "void main() {"
-    "   outColor = vec4( 1.0f, 0.0f, 1.0f, 1.0f);"
+    "   vec4 ambientColor = vec4( 0.3f, 0.0f, 0.1f, 1.0f );"
+    "   vec4 diffuseColor = vec4( 1.0f, 0.0f, 0.3f, 1.0f );"
+    "   vec4 specularColor = vec4( 1.0f, 1.0f, 1.0f, 1.0f );"
+    "   float diff = max(0.0, dot(normalize(smoothNormal), normalize(smoothLightDir)));"
+    "   outColor = diff * diffuseColor;"
+    "   outColor += ambientColor;"
+    "   vec3 vReflection = normalize(reflect(-normalize(smoothLightDir), normalize(smoothNormal)));"
+    "   float spec = max(0.0, dot(normalize(smoothNormal), vReflection));"
+    "   if(diff != 0) {"
+    "      float fSpec = pow(spec, 128.0);"
+    "      outColor.rgb += vec3(fSpec, fSpec, fSpec);"
+    "   }"
     "}";
 
 GLuint vertexShader;
@@ -243,15 +262,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
     // Generate the circle vertices
     int k = 30;
-    float r = 0.16;
+    float r = 0.13;
     int maxCircles = 10000;
-    float* circleVertices =  new float[3*k];
+    float* circleVertices =  new float[6*k];
 
     // Cylinder VBO
     GLuint circleVBO;
     glGenBuffers( 1, &circleVBO ); // Generate 1 buffer
     glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
-    glBufferData( GL_ARRAY_BUFFER, maxCircles * 3 * k * sizeof(float), NULL, GL_DYNAMIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, maxCircles * 6 * k * sizeof(float), NULL, GL_DYNAMIC_DRAW );
 
     GLuint cylinderShaderProgram = compileShaders(cylinderVertexShader, cylinderFragmentShader, cylinderVertexSource, cylinderFragmentSource);
     glUseProgram( cylinderShaderProgram );
@@ -263,9 +282,13 @@ int _tmain(int argc, _TCHAR* argv[])
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, maxCircles * 2 * 3 * k * sizeof(GLuint), NULL, GL_DYNAMIC_DRAW ); // 2 triangles for each vertex
 
     GLint cyposAttrib = glGetAttribLocation( cylinderShaderProgram, "position" );
-    glVertexAttribPointer( cyposAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0 );
+    glVertexAttribPointer( cyposAttrib, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), 0 );
     glEnableVertexAttribArray( cyposAttrib );
 
+    GLint normAttrib = glGetAttribLocation( cylinderShaderProgram, "normal" );
+    glVertexAttribPointer( normAttrib, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void * ) ( 3*sizeof(float) ) );
+    glEnableVertexAttribArray( normAttrib );
+    
     GLuint * cylinderTriangles =  new GLuint[2*3*k];
 
     // Main game loop
@@ -358,7 +381,11 @@ int _tmain(int argc, _TCHAR* argv[])
         glm::mat4 proj1 = glm::perspective( 45.0f, (float)width / (float)height, 1.0f, 10.0f );
         GLint uniProj1 = glGetUniformLocation( cylinderShaderProgram, "proj" );
         glUniformMatrix4fv( uniProj1, 1, GL_FALSE, glm::value_ptr( proj1 ) );
+        GLint uniNormMat = glGetUniformLocation( cylinderShaderProgram, "normalMatrix" );
+        glUniformMatrix4fv( uniNormMat, 1, GL_FALSE, glm::value_ptr( glm::inverse(viewc) ) );
 
+        glm::vec4 centVec = glm::vec4( 0.0f, 0.0f, 0.0f, 1.0f );
+        centVec = p_snake->getTransformMatrix() * centVec; //Transformation of circle center
         int step = snakeLinks.size() - 2;
         for(int i = 0; i != k; ++i) {
             float phi = 2 * M_PI * i / k;
@@ -367,9 +394,16 @@ int _tmain(int argc, _TCHAR* argv[])
             // Do the model transform
             glm::vec4 pointVec =  glm::vec4( x, y, 0.0f, 1.0f);
             glm::vec4 newVec = p_snake->getTransformMatrix() * pointVec;
-            circleVertices[3*i] = newVec.x;
-            circleVertices[3*i+1] = newVec.y;
-            circleVertices[3*i+2] = newVec.z;
+            circleVertices[6*i] = newVec.x;
+            circleVertices[6*i+1] = newVec.y;
+            circleVertices[6*i+2] = newVec.z;
+
+            // Normals
+            glm::vec4 normal = glm::normalize( newVec - centVec );
+            circleVertices[6*i+3] = normal.x;
+            circleVertices[6*i+4] = normal.y;
+            circleVertices[6*i+5] = normal.z;
+
             if (step >= 0){
                 if (i!= k-1){
                     cylinderTriangles[2*3*i] = i + step * k + 0 - 2*k;
@@ -391,7 +425,7 @@ int _tmain(int argc, _TCHAR* argv[])
         }
         glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
         
-        glBufferSubData( GL_ARRAY_BUFFER, 3 * k * sizeof(float) * (snakeLinks.size()-1), 3 * k * sizeof(float), circleVertices );
+        glBufferSubData( GL_ARRAY_BUFFER, 6 * k * sizeof(float) * (snakeLinks.size()-1), 6 * k * sizeof(float), circleVertices );
         if (showPoints)
            glDrawArrays( GL_POINTS, 0, snakeLinks.size() * k);
 
