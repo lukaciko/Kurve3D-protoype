@@ -1,7 +1,14 @@
 // Shader World prototype.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#pragma once
+
+#define GLFW_DLL
+
+#include "targetver.h"
+
+#include <stdio.h>
+#include <tchar.h>
 
 #include "Snake.h"
 #include "SnakeLink.h"
@@ -254,8 +261,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
     glEnable( GL_DEPTH_TEST );
 
-    Snake* p_snake = new Snake;
-    std::vector<SnakeLink *> snakeLinks;
+    Snake* p_snake1 = new Snake(0);
+	Snake* p_snake2 = new Snake(1);
+    std::vector<SnakeLink *> snakeLinks1;
+	std::vector<SnakeLink *> snakeLinks2;
 
     // Set up cylinder drawing
     glBindVertexArray( VAOs[1] );
@@ -272,6 +281,10 @@ int _tmain(int argc, _TCHAR* argv[])
     glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
     glBufferData( GL_ARRAY_BUFFER, maxCircles * 6 * k * sizeof(float), NULL, GL_DYNAMIC_DRAW );
 
+	GLuint circleVBO2;
+    glGenBuffers( 1, &circleVBO2 ); // Generate 1 buffer
+    
+
     GLuint cylinderShaderProgram = compileShaders(cylinderVertexShader, cylinderFragmentShader, cylinderVertexSource, cylinderFragmentSource);
     glUseProgram( cylinderShaderProgram );
 
@@ -280,6 +293,10 @@ int _tmain(int argc, _TCHAR* argv[])
     glGenBuffers( 1, &circleEBO ); // Generate 1 buffer
     glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO );
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, maxCircles * 2 * 3 * k * sizeof(GLuint), NULL, GL_DYNAMIC_DRAW ); // 2 triangles for each vertex
+
+	GLuint circleEBO2;
+    glGenBuffers( 1, &circleEBO2 ); // Generate 1 buffer
+    
 
     GLint cyposAttrib = glGetAttribLocation( cylinderShaderProgram, "position" );
     glVertexAttribPointer( cyposAttrib, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), 0 );
@@ -302,35 +319,46 @@ int _tmain(int argc, _TCHAR* argv[])
 
         bool crash=false;
 
-        glm::mat4 view = glm::lookAt(
-            p_snake->getPosition() - p_snake->getDirection() + p_snake->getUp(), // Position of the camera
-            p_snake->getPosition(),                                              // Point on screen
-            p_snake->getUp()                                                     // Up axis
+        glm::mat4 view1 = glm::lookAt(
+            p_snake1->getPosition() - p_snake1->getDirection() + p_snake1->getUp(), // Position of the camera
+            p_snake1->getPosition(),                                              // Point on screen
+            p_snake1->getUp()                                                     // Up axis
+            );
+
+		glm::mat4 view2 = glm::lookAt(
+            p_snake2->getPosition() - p_snake2->getDirection() + p_snake2->getUp(), // Position of the camera
+            p_snake2->getPosition(),                                              // Point on screen
+            p_snake2->getUp()                                                     // Up axis
             );
 
         GLint uniView = glGetUniformLocation( shaderProgram, "view" );
-        glUniformMatrix4fv( uniView, 1, GL_FALSE, glm::value_ptr( view ) );
+        glUniformMatrix4fv( uniView, 1, GL_FALSE, glm::value_ptr( view1 ) );
+		//GLint uniView = glGetUniformLocation( shaderProgram, "view" );
+        //glUniformMatrix4fv( uniView, 1, GL_FALSE, glm::value_ptr( view2 ) );
 
         glm::mat4 proj = glm::perspective( 45.0f, (float)width / (float)height, 0.4f, 10.0f );
         GLint uniProj = glGetUniformLocation( shaderProgram, "proj" );
         glUniformMatrix4fv( uniProj, 1, GL_FALSE, glm::value_ptr( proj ) );
 
         if (unpausedImpulse) {
-            p_snake->setBegin(clock());
+            p_snake1->setBegin(clock());
+			p_snake2->setBegin(clock());
             unpausedImpulse = false;
         }
         if (!gamePaused) { 
-            snakeLinks.push_back(new SnakeLink(p_snake->getPosition()));
-            p_snake->move();
+            snakeLinks1.push_back(new SnakeLink(p_snake1->getPosition()));
+			snakeLinks2.push_back(new SnakeLink(p_snake2->getPosition()));
+            p_snake1->move();
+			p_snake2->move();
         }
 
-        glm::vec3 sPos = p_snake->getPosition();
+        glm::vec3 sPos = p_snake1->getPosition();
         double dist= 0;
         double increase=0.001;
         bool change = false;
         int i=0;
         bool collision = false;
-        for(std::vector<SnakeLink *>::iterator it = snakeLinks.begin(); it != snakeLinks.end(); ++it) {
+       for(std::vector<SnakeLink *>::iterator it = snakeLinks1.begin(); it != snakeLinks1.end(); ++it) {
             i++;
             if (dist>0.899 & !change) {
                 increase *= -1;
@@ -342,7 +370,7 @@ int _tmain(int argc, _TCHAR* argv[])
             }
             dist=dist+increase;
             glm::vec3 iPos = (*it)->getPosition();
-            if((pow(sPos.x-iPos.x,2) < 0.01) && (pow(sPos.y-iPos.y,2) < 0.01) && (pow(sPos.z-iPos.z,2) < 0.01) && (i<(int)snakeLinks.size()-150) && ((int)snakeLinks.size()>150) && !collision){
+            if((pow(sPos.x-iPos.x,2) < 0.01) && (pow(sPos.y-iPos.y,2) < 0.01) && (pow(sPos.z-iPos.z,2) < 0.01) && (i<(int)snakeLinks1.size()-150) && ((int)snakeLinks1.size()>150) && !collision){
                 std::cout<<"Collision!";
                 collision=true;
             }
@@ -352,48 +380,50 @@ int _tmain(int argc, _TCHAR* argv[])
             glm::vec3 distV = sPos - iPos;
 
             GLint uniColor = glGetUniformLocation( shaderProgram, "color" );
-            glUniform1f(uniColor, 0.0f+dist);
-
+            glUniform1f(uniColor, 0.5f);
             if ( showBillboards )
                 glDrawArrays( GL_TRIANGLES, 0, 6 );
         }
-
-        p_snake->draw();
+		
+        p_snake1->draw();		
         GLint uniModel = glGetUniformLocation( shaderProgram, "model" );
-        glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), sPos ) ) );
+        glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), p_snake1->getPosition() ) ) );
+		
 
         if (showBillboards)
             glDrawArrays( GL_TRIANGLES, 0, 6 );
+		
+		p_snake2->draw();       
+        glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), p_snake2->getPosition() ) ) );
+        if (showBillboards)
+            glDrawArrays( GL_TRIANGLES, 0, 6 );
+		
 
-        glBindVertexArray(VAOs[1]);
+		glBindVertexArray(VAOs[1]);
         glUseProgram( cylinderShaderProgram );
 
-        glm::mat4 viewc = glm::lookAt(
-            p_snake->getPosition() - p_snake->getDirection() + p_snake->getUp(), // Position of the camera
-            p_snake->getPosition(),                                              // Point on screen
-            p_snake->getUp()                                              // Up axis
-            );
+        
 
         GLint uniModel1 = glGetUniformLocation( cylinderShaderProgram, "model" );
-        glUniformMatrix4fv( uniModel1, 1, GL_FALSE, glm::value_ptr( p_snake->getTransformMatrix() ));  
+        glUniformMatrix4fv( uniModel1, 1, GL_FALSE, glm::value_ptr( p_snake1->getTransformMatrix() ));  
         GLint uniView1 = glGetUniformLocation( cylinderShaderProgram, "view" );
-        glUniformMatrix4fv( uniView1, 1, GL_FALSE, glm::value_ptr( viewc ) );
+        glUniformMatrix4fv( uniView1, 1, GL_FALSE, glm::value_ptr( view1 ) );
         glm::mat4 proj1 = glm::perspective( 45.0f, (float)width / (float)height, 1.0f, 10.0f );
         GLint uniProj1 = glGetUniformLocation( cylinderShaderProgram, "proj" );
         glUniformMatrix4fv( uniProj1, 1, GL_FALSE, glm::value_ptr( proj1 ) );
         GLint uniNormMat = glGetUniformLocation( cylinderShaderProgram, "normalMatrix" );
-        glUniformMatrix4fv( uniNormMat, 1, GL_FALSE, glm::value_ptr( glm::inverse(viewc) ) );
+        glUniformMatrix4fv( uniNormMat, 1, GL_FALSE, glm::value_ptr( glm::inverse(view1) ) );
 
-        glm::vec4 centVec = glm::vec4( 0.0f, 0.0f, 0.0f, 1.0f );
-        centVec = p_snake->getTransformMatrix() * centVec; //Transformation of circle center
-        int step = snakeLinks.size() - 2;
+        glm::vec4 centVec;
+        centVec = p_snake1->getTransformMatrix() * centVec; //Transformation of circle center
+        int step = snakeLinks1.size() - 2;
         for(int i = 0; i != k; ++i) {
             float phi = 2 * M_PI * i / k;
             float x = sin(phi) * r;
             float y = cos(phi) * r;
             // Do the model transform
             glm::vec4 pointVec =  glm::vec4( x, y, 0.0f, 1.0f);
-            glm::vec4 newVec = p_snake->getTransformMatrix() * pointVec;
+            glm::vec4 newVec = p_snake1->getTransformMatrix() * pointVec;
             circleVertices[6*i] = newVec.x;
             circleVertices[6*i+1] = newVec.y;
             circleVertices[6*i+2] = newVec.z;
@@ -425,9 +455,9 @@ int _tmain(int argc, _TCHAR* argv[])
         }
         glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
         
-        glBufferSubData( GL_ARRAY_BUFFER, 6 * k * sizeof(float) * (snakeLinks.size()-1), 6 * k * sizeof(float), circleVertices );
+        glBufferSubData( GL_ARRAY_BUFFER, 6 * k * sizeof(float) * (snakeLinks1.size()-1), 6 * k * sizeof(float), circleVertices );
         if (showPoints)
-           glDrawArrays( GL_POINTS, 0, snakeLinks.size() * k);
+           glDrawArrays( GL_POINTS, 0, snakeLinks1.size() * k);
 
         // Fill the elements buffer
         glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO );
@@ -435,21 +465,98 @@ int _tmain(int argc, _TCHAR* argv[])
             glBufferSubData( GL_ELEMENT_ARRAY_BUFFER, 2 * 3 * k * sizeof(GLuint) * (step-2), 2 * 3 * k * sizeof(GLuint), cylinderTriangles );
         }
         if (showCylinder)
-            glDrawElements( GL_TRIANGLES, k * 3 * 2 * (step-2), GL_UNSIGNED_INT, 0 ); 
+            glDrawElements( GL_TRIANGLES, k * 3 * 2 * (step-2), GL_UNSIGNED_INT, 0 );
+
 
         if(collision) {
-            delete p_snake;
-            p_snake = new Snake;
-            snakeLinks.clear();
+            delete p_snake1;
+            p_snake1 = new Snake(1);
+            snakeLinks1.clear();
         }
+		
+		GLint uniModel2 = glGetUniformLocation( cylinderShaderProgram, "model" );
+        glUniformMatrix4fv( uniModel2, 1, GL_FALSE, glm::value_ptr( p_snake2->getTransformMatrix() ));  
+        GLint uniView2 = glGetUniformLocation( cylinderShaderProgram, "view" );
+        glUniformMatrix4fv( uniView2, 1, GL_FALSE, glm::value_ptr( view2 ) );
+        glm::mat4 proj2 = glm::perspective( 45.0f, (float)width / (float)height, 1.0f, 10.0f );
+        GLint uniProj2 = glGetUniformLocation( cylinderShaderProgram, "proj" );
+        glUniformMatrix4fv( uniProj2, 1, GL_FALSE, glm::value_ptr( proj2 ) );
+        GLint uniNormMat2 = glGetUniformLocation( cylinderShaderProgram, "normalMatrix" );
+        glUniformMatrix4fv( uniNormMat2, 1, GL_FALSE, glm::value_ptr( glm::inverse(view2) ) );
+		
+		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO2 );
+		glBufferData( GL_ELEMENT_ARRAY_BUFFER, maxCircles * 2 * 3 * k * sizeof(GLuint), NULL, GL_DYNAMIC_DRAW ); // 2 triangles for each vertex
+		glBindBuffer( GL_ARRAY_BUFFER, circleVBO2 );
+		glBufferData( GL_ARRAY_BUFFER, maxCircles * 6 * k * sizeof(float), NULL, GL_DYNAMIC_DRAW );
+		centVec = p_snake2->getTransformMatrix() * centVec; //Transformation of circle center
+        step = snakeLinks2.size() - 2;
+        circleVertices =  new float[6*k];
+		cylinderTriangles =  new GLuint[2*3*k];
+		for(int i = 0; i != k; ++i) {
+            float phi = 2 * M_PI * i / k;
+            float x = sin(phi) * r;
+            float y = cos(phi) * r;
+            // Do the model transform
+            glm::vec4 pointVec =  glm::vec4( x, y, 0.0f, 1.0f);
+            glm::vec4 newVec = p_snake2->getTransformMatrix() * pointVec;
+            circleVertices[6*i] = newVec.x;
+            circleVertices[6*i+1] = newVec.y;
+            circleVertices[6*i+2] = newVec.z;
 
+            // Normals
+            glm::vec4 normal = glm::normalize( newVec - centVec );
+            circleVertices[6*i+3] = normal.x;
+            circleVertices[6*i+4] = normal.y;
+            circleVertices[6*i+5] = normal.z;
+
+            if (step >= 0){
+                if (i!= k-1){
+                    cylinderTriangles[2*3*i] = i + step * k + 0 - 2*k;
+                    cylinderTriangles[2*3*i+1] = i + step * k + 1 -2*k;
+                    cylinderTriangles[2*3*i+2] = i + step * k + 0 + k -2*k;
+                    cylinderTriangles[2*3*i+3] = i + step * k + 0 + k - 2*k;
+                    cylinderTriangles[2*3*i+4] = i + step * k + 1 - 2*k;
+                    cylinderTriangles[2*3*i+5] = i + step * k + 1 + k - 2*k;
+                }
+                else {
+                    cylinderTriangles[2*3*i] = i + step * k + 0 - 2*k;
+                    cylinderTriangles[2*3*i+1] = i + step * k + 1 -k - 2*k;
+                    cylinderTriangles[2*3*i+2] = i + step * k + 0 + k -2*k;
+                    cylinderTriangles[2*3*i+3] = i + step * k + 0 + k - 2*k;
+                    cylinderTriangles[2*3*i+4] = i + step * k + 1 - k - 2*k;
+                    cylinderTriangles[2*3*i+5] = i + step * k + 1 - k + k - 2*k;
+                }
+            }
+        }
+        glBindBuffer( GL_ARRAY_BUFFER, circleVBO2 );
+        
+        glBufferSubData( GL_ARRAY_BUFFER, 6 * k * sizeof(float) * (snakeLinks2.size()-1), 6 * k * sizeof(float), circleVertices );
+        if (showPoints)
+           glDrawArrays( GL_POINTS, 0, snakeLinks2.size() * k);
+
+        // Fill the elements buffer
+        glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO2 );
+        if (step > 1) {
+            glBufferSubData( GL_ELEMENT_ARRAY_BUFFER, 2 * 3 * k * sizeof(GLuint) * (step-2), 2 * 3 * k * sizeof(GLuint), cylinderTriangles );
+        }
+        if (showCylinder)
+            glDrawElements( GL_TRIANGLES, k * 3 * 2 * (step-2), GL_UNSIGNED_INT, 0 );
+
+
+        if(collision) {
+            delete p_snake2;
+            p_snake2 = new Snake(1);
+            snakeLinks2.clear();
+        }
         glfwSwapBuffers(); // Also calls glfwPoolEvents
     }
 
     // TODO delete snakelinks
 
-    delete p_snake;
-    p_snake = 0;
+    delete p_snake1;
+    p_snake1 = 0;
+	delete p_snake2;
+    p_snake2 = 0;
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
@@ -458,3 +565,4 @@ int _tmain(int argc, _TCHAR* argv[])
 
     return 0;
 }
+

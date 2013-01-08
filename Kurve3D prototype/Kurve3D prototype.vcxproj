@@ -350,7 +350,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VitaIncludes.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WSAStartupSingleton.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\_FindFirst.cpp" />
-    <ClCompile Include="Kurve3Dprototype.cpp" />
+    <ClCompile Include="Kurve3D prototype.cpp" />
     <ClCompile Include="snake.cpp" />
     <ClCompile Include="SnakeLink.cpp" />
     <ClCompile Include="RakNetHandler.cpp" />

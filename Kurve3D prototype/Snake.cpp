@@ -20,9 +20,10 @@
 float diff = 1.0f; // change speed here
 glm::vec3 v4tov3(glm::vec4 v1);
 
-Snake::Snake() {
+Snake::Snake(int pl) {
     std::cout << "Constructing snake";
-    lastPosition[0] = 0.0f;
+    player=pl;
+	lastPosition[0] = 0.0f;
     lastPosition[1] = 0.0f;
     lastPosition[2] = 0.0f;
     lastPosition[3] = 1.0f; // Point - w=1
@@ -36,6 +37,18 @@ Snake::Snake() {
     up[3] = 0.0f; // Vector - w=0
 	begin = clock();
     rotationMatrix = glm::mat4();
+	if(pl==0) {
+		upButton=GLFW_KEY_UP;
+		downButton=GLFW_KEY_DOWN;
+		leftButton=GLFW_KEY_LEFT;
+		rightButton=GLFW_KEY_RIGHT;
+	}
+	else {
+		upButton='W';
+		downButton='S';
+		leftButton='A';
+		rightButton='D';
+	}
 }
 
 
@@ -45,32 +58,32 @@ void Snake::move() {
     // Change direction
 
 	// Check input
-    if (glfwGetKey( GLFW_KEY_UP ) == GLFW_PRESS) {
+    if (glfwGetKey( upButton ) == GLFW_PRESS) {
         glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, glm::cross(v4tov3(up), v4tov3(direction))); 
         direction = rotateM * direction;
         rotationMatrix = rotateM * rotationMatrix;
         up = rotateM * up;
     }
-    if (glfwGetKey( GLFW_KEY_DOWN ) == GLFW_PRESS) {
+    if (glfwGetKey( downButton ) == GLFW_PRESS) {
         glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, glm::cross(v4tov3(up), v4tov3(direction)));  
         direction = rotateM * direction;
         rotationMatrix = rotateM * rotationMatrix;
         up = rotateM * up;
     }
-    if (glfwGetKey( GLFW_KEY_LEFT ) == GLFW_PRESS) {
+    if (glfwGetKey( leftButton ) == GLFW_PRESS) {
         glm::mat4 rotateM = glm::rotate(glm::mat4(), diff_angle, v4tov3(up)); 
         direction =  rotateM * direction;
         rotationMatrix = rotateM * rotationMatrix;
         up = rotateM * up;
     }
-    if (glfwGetKey( GLFW_KEY_RIGHT ) == GLFW_PRESS) {
+    if (glfwGetKey( rightButton ) == GLFW_PRESS) {
         glm::mat4 rotateM = glm::rotate(glm::mat4(), -diff_angle, v4tov3(up)); 
         direction = rotateM * direction;
         rotationMatrix = rotateM * rotationMatrix;
         up = rotateM * up;
     }
-
-    // Change position
+	if(player==0)
+		std::cout<<"Snake je " << upButton << getPosition().x; 
 	clock_t end = clock();
 	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 	begin=end;

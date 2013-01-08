@@ -7,7 +7,7 @@ typedef long clock_t;
 
 class Snake {
 public:
-    Snake();
+    Snake(int pl);
     void draw();
     void move();
     glm::vec3 getPosition();
@@ -21,6 +21,11 @@ private:
     glm::vec4 up;
     glm::mat4 rotationMatrix; // The rotation part of TRS matrix
     clock_t begin; // Timestamp of step beginning
+	int player; //player number
+	int upButton;
+	int downButton;
+	int leftButton;
+	int rightButton;
 };
 
 #endif

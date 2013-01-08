@@ -836,7 +836,7 @@
     <ClCompile Include="RakNetHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Kurve3Dprototype.cpp">
+    <ClCompile Include="Kurve3D prototype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
