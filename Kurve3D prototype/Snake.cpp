@@ -7,6 +7,7 @@
 #include <glm\glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <ctime>
 
 
 float diff = 1.0f; // change speed here
@@ -93,4 +94,8 @@ glm::vec3 v4tov3(glm::vec4 v1)  {
 
 glm::mat4 Snake::getTransformMatrix() {
     return glm::translate(glm::mat4(), getPosition()) * rotationMatrix;
+}
+
+void Snake::setBegin(clock_t newBegin) {
+    begin = newBegin;
 }

@@ -79,6 +79,9 @@ GLuint cylinderFragmentShader;
 bool gamePaused;
 bool unpausedImpulse;
 
+bool showBillboards = true;
+bool showPoints = true;
+bool showCylinder = true;
 
 void GLFWCALL keyCallbackFunction(int key, int newState) {
     std::cout << key << " " << ( newState == GLFW_PRESS ? "pressed" : "released" ) << "\n";
@@ -87,6 +90,13 @@ void GLFWCALL keyCallbackFunction(int key, int newState) {
         if ( !gamePaused ) 
             unpausedImpulse = true;
     }
+    if ( key == 'I' && newState == GLFW_PRESS)
+        showBillboards = !showBillboards;
+    if ( key == 'O' && newState == GLFW_PRESS)
+        showPoints = !showPoints;
+    if ( key == 'P' && newState == GLFW_PRESS)
+        showCylinder = !showCylinder;
+
 }
 
 float vertices[] = {
@@ -232,11 +242,12 @@ int _tmain(int argc, _TCHAR* argv[])
     glBindVertexArray( VAOs[1] );
 
     // Generate the circle vertices
-    int k = 10;
-    float r = 0.12;
-    int maxCircles = 2000;
+    int k = 30;
+    float r = 0.16;
+    int maxCircles = 10000;
     float* circleVertices =  new float[3*k];
-    
+
+    // Cylinder VBO
     GLuint circleVBO;
     glGenBuffers( 1, &circleVBO ); // Generate 1 buffer
     glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
@@ -245,9 +256,17 @@ int _tmain(int argc, _TCHAR* argv[])
     GLuint cylinderShaderProgram = compileShaders(cylinderVertexShader, cylinderFragmentShader, cylinderVertexSource, cylinderFragmentSource);
     glUseProgram( cylinderShaderProgram );
 
+    // Cylinder EBO
+    GLuint circleEBO;
+    glGenBuffers( 1, &circleEBO ); // Generate 1 buffer
+    glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO );
+    glBufferData( GL_ELEMENT_ARRAY_BUFFER, maxCircles * 2 * 3 * k * sizeof(GLuint), NULL, GL_DYNAMIC_DRAW ); // 2 triangles for each vertex
+
     GLint cyposAttrib = glGetAttribLocation( cylinderShaderProgram, "position" );
     glVertexAttribPointer( cyposAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0 );
     glEnableVertexAttribArray( cyposAttrib );
+
+    GLuint * cylinderTriangles =  new GLuint[2*3*k];
 
     // Main game loop
     while( glfwGetWindowParam( GLFW_OPENED ) ) {
@@ -312,14 +331,16 @@ int _tmain(int argc, _TCHAR* argv[])
             GLint uniColor = glGetUniformLocation( shaderProgram, "color" );
             glUniform1f(uniColor, 0.0f+dist);
 
-            glDrawArrays( GL_TRIANGLES, 0, 6 );
+            if ( showBillboards )
+                glDrawArrays( GL_TRIANGLES, 0, 6 );
         }
 
         p_snake->draw();
         GLint uniModel = glGetUniformLocation( shaderProgram, "model" );
         glUniformMatrix4fv( uniModel, 1, GL_FALSE, glm::value_ptr( glm::translate(glm::mat4(), sPos ) ) );
 
-        glDrawArrays( GL_TRIANGLES, 0, 6 );
+        if (showBillboards)
+            glDrawArrays( GL_TRIANGLES, 0, 6 );
 
         glBindVertexArray(VAOs[1]);
         glUseProgram( cylinderShaderProgram );
@@ -338,6 +359,7 @@ int _tmain(int argc, _TCHAR* argv[])
         GLint uniProj1 = glGetUniformLocation( cylinderShaderProgram, "proj" );
         glUniformMatrix4fv( uniProj1, 1, GL_FALSE, glm::value_ptr( proj1 ) );
 
+        int step = snakeLinks.size() - 2;
         for(int i = 0; i != k; ++i) {
             float phi = 2 * M_PI * i / k;
             float x = sin(phi) * r;
@@ -345,18 +367,43 @@ int _tmain(int argc, _TCHAR* argv[])
             // Do the model transform
             glm::vec4 pointVec =  glm::vec4( x, y, 0.0f, 1.0f);
             glm::vec4 newVec = p_snake->getTransformMatrix() * pointVec;
-            //std::cout << x << " --------- " << pointVec.x << "\n";
             circleVertices[3*i] = newVec.x;
             circleVertices[3*i+1] = newVec.y;
             circleVertices[3*i+2] = newVec.z;
+            if (step >= 0){
+                if (i!= k-1){
+                    cylinderTriangles[2*3*i] = i + step * k + 0 - 2*k;
+                    cylinderTriangles[2*3*i+1] = i + step * k + 1 -2*k;
+                    cylinderTriangles[2*3*i+2] = i + step * k + 0 + k -2*k;
+                    cylinderTriangles[2*3*i+3] = i + step * k + 0 + k - 2*k;
+                    cylinderTriangles[2*3*i+4] = i + step * k + 1 - 2*k;
+                    cylinderTriangles[2*3*i+5] = i + step * k + 1 + k - 2*k;
+                }
+                else{
+                    cylinderTriangles[2*3*i] = i + step * k + 0 - 2*k;
+                    cylinderTriangles[2*3*i+1] = i + step * k + 1 -k - 2*k;
+                    cylinderTriangles[2*3*i+2] = i + step * k + 0 + k -2*k;
+                    cylinderTriangles[2*3*i+3] = i + step * k + 0 + k - 2*k;
+                    cylinderTriangles[2*3*i+4] = i + step * k + 1 - k - 2*k;
+                    cylinderTriangles[2*3*i+5] = i + step * k + 1 - k + k - 2*k;
+                }
+            }
         }
-        
         glBindBuffer( GL_ARRAY_BUFFER, circleVBO );
-        glBufferSubData( GL_ARRAY_BUFFER, 3 * k * sizeof(float) * snakeLinks.size(), 3 * k * sizeof(float), circleVertices );
+        
+        glBufferSubData( GL_ARRAY_BUFFER, 3 * k * sizeof(float) * (snakeLinks.size()-1), 3 * k * sizeof(float), circleVertices );
+        if (showPoints)
+           glDrawArrays( GL_POINTS, 0, snakeLinks.size() * k);
 
-        glDrawArrays( GL_LINE_LOOP, 0, snakeLinks.size() * k );
+        // Fill the elements buffer
+        glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, circleEBO );
+        if (step > 1) {
+            glBufferSubData( GL_ELEMENT_ARRAY_BUFFER, 2 * 3 * k * sizeof(GLuint) * (step-2), 2 * 3 * k * sizeof(GLuint), cylinderTriangles );
+        }
+        if (showCylinder)
+            glDrawElements( GL_TRIANGLES, k * 3 * 2 * (step-2), GL_UNSIGNED_INT, 0 ); 
 
-		if(collision) {
+        if(collision) {
             delete p_snake;
             p_snake = new Snake;
             snakeLinks.clear();

@@ -2,7 +2,8 @@
 #define SNAKE_H
 
 #include <glm\glm.hpp>
-#include <ctime>
+
+typedef long clock_t;
 
 class Snake {
 public:
@@ -13,7 +14,7 @@ public:
     glm::vec3 getUp();
     glm::vec3 getDirection();
     glm::mat4 getTransformMatrix(); 
-    void setBegin(clock_t newBegin) { begin = newBegin; } ;
+    void setBegin(clock_t);
 private:
     glm::vec4 lastPosition;
     glm::vec4 direction;
