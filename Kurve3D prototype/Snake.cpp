@@ -1,4 +1,11 @@
-#include "stdafx.h"
+#pragma once
+
+#define GLFW_DLL
+
+#include "targetver.h"
+
+#include <stdio.h>
+#include <tchar.h>
 
 #include "Snake.h"
 #include <GL\glfw.h>

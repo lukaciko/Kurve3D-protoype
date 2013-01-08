@@ -13,9 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\RakNetSource">
+      <UniqueIdentifier>{b98c07c2-ddc9-49f2-9104-9ad0e808a851}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcproj">
+      <Filter>Source Files\RakNetSource</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcxproj">
+      <Filter>Source Files\RakNetSource</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcxproj.filters">
+      <Filter>Source Files\RakNetSource</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet_vc8.vcproj">
+      <Filter>Source Files\RakNetSource</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet_vc9.vcproj">
+      <Filter>Source Files\RakNetSource</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -30,12 +48,465 @@
     <ClInclude Include="SnakeLink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableListDeltaTracker.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariadicSQLParser.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VitaIncludes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WindowsIncludes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WSAStartupSingleton.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\XBox360Includes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\_FindFirst.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\AutopatcherPatchContext.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\AutopatcherRepositoryInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Base64Encoder.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\BitStream.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetSlidingWindow.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetUDT.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CheckSum.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudClient.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudCommon.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CommandParserInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConnectionGraph2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConsoleServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DataCompressor.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DirectoryDeltaTransfer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BinarySearchTree.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BPlusTree.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BytePool.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ByteQueue.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Hash.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Heap.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTree.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTreeFactory.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTreeNode.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_LinkedList.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_List.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Map.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_MemoryPool.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Multilist.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_OrderedChannelHeap.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_OrderedList.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Queue.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_QueueLinkedList.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_RangeList.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Table.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ThreadsafeAllocatingQueue.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Tree.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_WeightedGraph.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DynDNS.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EmailSender.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EpochTimeToString.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Export.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileList.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListNodeContext.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransfer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransferCBInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileOperations.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FormatString.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FullyConnectedMesh2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Getche.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Gets.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GetTime.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\gettimeofday.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GridSectorizer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\IncrementalReadInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\InternalPacket.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Itoa.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Kbhit.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LinuxStrings.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LocklessTypes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LogCommandParser.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageFilter.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageIdentifiers.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MTUSize.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeFeatureIncludes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeFeatureIncludesOverrides.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeTypes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughClient.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionClient.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionCommon.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDManager.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDObject.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketConsoleLogger.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketFileLogger.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketizedTCP.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketLogger.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketOutputWindowLogger.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketPool.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketPriority.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PluginInterface2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PS3Includes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rackspace.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakAlloca.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakAssert.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakMemoryOverride.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetCommandParser.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetDefines.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetDefinesOverrides.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSmartPtr.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetStatistics.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTime.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTransport2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTypes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetVersion.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeerInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakSleep.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakString.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakThread.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakWString.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rand.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReadyEvent.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RefCountedObj.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RelayPlugin.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReliabilityLayer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaEnums.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaManager3.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Router2.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RPC4Plugin.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SecureHandshake.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SendToThread.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SHA1.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SignaledEvent.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleMutex.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleTCPServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SingleProducerConsumer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketDefines.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketIncludes.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketLayer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StatisticsHistory.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringCompressor.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringTable.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SuperFastHash.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TableSerializer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TCPInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamBalancer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamManager.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TelnetTransport.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadPool.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadsafePacketLogger.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TransportInterface.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TwoWayAuthentication.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPForwarder.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyClient.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCommon.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCoordinator.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyServer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableDeltaSerializer.h">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClInclude>
+    <ClInclude Include="RakNetHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Kurve3D prototype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="snake.cpp">
@@ -44,5 +515,334 @@
     <ClCompile Include="SnakeLink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableListDeltaTracker.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariadicSQLParser.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VitaIncludes.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WSAStartupSingleton.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\_FindFirst.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Base64Encoder.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\BitStream.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetSlidingWindow.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetUDT.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CheckSum.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudClient.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudCommon.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudServer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CommandParserInterface.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConnectionGraph2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConsoleServer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DataCompressor.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DirectoryDeltaTransfer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BytePool.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ByteQueue.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTree.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Table.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DynDNS.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EmailSender.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EncodeClassName.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EpochTimeToString.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileList.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransfer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileOperations.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FormatString.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FullyConnectedMesh2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Getche.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Gets.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GetTime.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\gettimeofday.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GridSectorizer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\IncrementalReadInterface.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Itoa.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LinuxStrings.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LocklessTypes.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LogCommandParser.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageFilter.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughClient.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughServer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionClient.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionCommon.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionServer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDManager.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDObject.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketConsoleLogger.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketFileLogger.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketizedTCP.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketLogger.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketOutputWindowLogger.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PluginInterface2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rackspace.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakMemoryOverride.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetCommandParser.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_360_720.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Berkley.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_NativeClient.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_PS3_PS4.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Vita.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Windows_Linux.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Windows_Linux_360.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetStatistics.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTransport2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTypes.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakSleep.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakString.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakThread.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakWString.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rand.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReadyEvent.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RelayPlugin.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReliabilityLayer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaManager3.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Router2.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RPC4Plugin.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SecureHandshake.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SendToThread.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SHA1.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SignaledEvent.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleMutex.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketLayer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StatisticsHistory.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringCompressor.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringTable.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SuperFastHash.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TableSerializer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TCPInterface.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamBalancer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamManager.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TelnetTransport.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadsafePacketLogger.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TwoWayAuthentication.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPForwarder.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyClient.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCoordinator.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyServer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableDeltaSerializer.cpp">
+      <Filter>Source Files\RakNetSource</Filter>
+    </ClCompile>
+    <ClCompile Include="RakNetHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Kurve3Dprototype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CMakeLists.txt">
+      <Filter>Source Files\RakNetSource</Filter>
+    </Text>
   </ItemGroup>
 </Project>
