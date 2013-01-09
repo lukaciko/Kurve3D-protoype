@@ -53,12 +53,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../Include\RakNet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Include\RakNetHeaders;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;glu32.lib;opengl32.lib;libglfwdll.a;SOIL.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glu32.lib;opengl32.lib;libglfwdll.a;SOIL.lib;ws2_32.lib;RakNetDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,165 +80,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcproj" />
-    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcxproj" />
-    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet.vcxproj.filters" />
-    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet_vc8.vcproj" />
-    <None Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNet_vc9.vcproj" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\AutopatcherPatchContext.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\AutopatcherRepositoryInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Base64Encoder.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\BitStream.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetSlidingWindow.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetUDT.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CheckSum.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudClient.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudCommon.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CommandParserInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConnectionGraph2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConsoleServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DataCompressor.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DirectoryDeltaTransfer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BinarySearchTree.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BPlusTree.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BytePool.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ByteQueue.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Hash.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Heap.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTree.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTreeFactory.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTreeNode.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_LinkedList.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_List.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Map.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_MemoryPool.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Multilist.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_OrderedChannelHeap.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_OrderedList.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Queue.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_QueueLinkedList.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_RangeList.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Table.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ThreadsafeAllocatingQueue.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Tree.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_WeightedGraph.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DynDNS.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EmailSender.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EpochTimeToString.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Export.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileList.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListNodeContext.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransfer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransferCBInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileOperations.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FormatString.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FullyConnectedMesh2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Getche.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Gets.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GetTime.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\gettimeofday.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GridSectorizer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\IncrementalReadInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\InternalPacket.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Itoa.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Kbhit.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LinuxStrings.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LocklessTypes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LogCommandParser.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageFilter.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageIdentifiers.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MTUSize.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeFeatureIncludes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeFeatureIncludesOverrides.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NativeTypes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughClient.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionClient.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionCommon.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDManager.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDObject.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketConsoleLogger.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketFileLogger.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketizedTCP.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketLogger.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketOutputWindowLogger.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketPool.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketPriority.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PluginInterface2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PS3Includes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rackspace.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakAlloca.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakAssert.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakMemoryOverride.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetCommandParser.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetDefines.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetDefinesOverrides.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSmartPtr.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetStatistics.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTime.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTransport2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTypes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetVersion.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeerInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakSleep.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakString.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakThread.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakWString.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rand.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReadyEvent.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RefCountedObj.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RelayPlugin.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReliabilityLayer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaEnums.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaManager3.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Router2.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RPC4Plugin.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SecureHandshake.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SendToThread.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SHA1.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SignaledEvent.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleMutex.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleTCPServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SingleProducerConsumer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketDefines.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketIncludes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketLayer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StatisticsHistory.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringCompressor.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringTable.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SuperFastHash.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TableSerializer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TCPInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamBalancer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamManager.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TelnetTransport.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadPool.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadsafePacketLogger.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TransportInterface.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TwoWayAuthentication.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPForwarder.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyClient.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCommon.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCoordinator.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyServer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableDeltaSerializer.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableListDeltaTracker.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariadicSQLParser.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VitaIncludes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WindowsIncludes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WSAStartupSingleton.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\XBox360Includes.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\_FindFirst.h" />
     <ClInclude Include="RakNetHandler.h" />
     <ClInclude Include="snake.h" />
     <ClInclude Include="SnakeLink.h" />
@@ -244,112 +90,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Base64Encoder.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\BitStream.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetSlidingWindow.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CCRakNetUDT.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CheckSum.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudCommon.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CloudServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CommandParserInterface.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConnectionGraph2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ConsoleServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DataCompressor.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DirectoryDeltaTransfer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_BytePool.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_ByteQueue.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_HuffmanEncodingTree.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DS_Table.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\DynDNS.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EmailSender.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EncodeClassName.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\EpochTimeToString.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileList.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileListTransfer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FileOperations.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FormatString.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\FullyConnectedMesh2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Getche.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Gets.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GetTime.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\gettimeofday.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\GridSectorizer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\HTTPConnection2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\IncrementalReadInterface.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Itoa.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LinuxStrings.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LocklessTypes.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\LogCommandParser.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\MessageFilter.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatPunchthroughServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionCommon.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NatTypeDetectionServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\NetworkIDObject.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketConsoleLogger.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketFileLogger.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketizedTCP.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketLogger.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PacketOutputWindowLogger.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\PluginInterface2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rackspace.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakMemoryOverride.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetCommandParser.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_360_720.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Berkley.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_NativeClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_PS3_PS4.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Vita.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Windows_Linux.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetSocket2_Windows_Linux_360.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetStatistics.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTransport2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakNetTypes.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakPeer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakSleep.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakString.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakThread.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RakWString.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Rand.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReadyEvent.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RelayPlugin.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReliabilityLayer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ReplicaManager3.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\Router2.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\RPC4Plugin.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SecureHandshake.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SendToThread.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SHA1.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SignaledEvent.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SimpleMutex.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SocketLayer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StatisticsHistory.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringCompressor.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\StringTable.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\SuperFastHash.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TableSerializer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TCPInterface.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamBalancer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TeamManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TelnetTransport.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\ThreadsafePacketLogger.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\TwoWayAuthentication.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPForwarder.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyClient.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyCoordinator.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\UDPProxyServer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableDeltaSerializer.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariableListDeltaTracker.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VariadicSQLParser.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\VitaIncludes.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\WSAStartupSingleton.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\_FindFirst.cpp" />
     <ClCompile Include="Kurve3D prototype.cpp" />
     <ClCompile Include="snake.cpp" />
     <ClCompile Include="SnakeLink.cpp" />
@@ -358,9 +98,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\..\..\..\..\projekti-temp\kurve3d\Source\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
